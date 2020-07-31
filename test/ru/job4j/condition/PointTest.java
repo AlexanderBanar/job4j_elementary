@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PointTest {
-
     @Test
     public void distance() {
         int x1 = 0;
