@@ -8,15 +8,11 @@ public class Max {
     }
 
     public static int max(int left, int right, int up) {
-        boolean condition = left >= max(right, up);
-        int rsl = condition ? left : max(right, up);
-        return rsl;
+        return left >= max(right, up) ? left : max(right, up);
     }
 
     public static int max(int left, int right, int up, int down) {
-        boolean condition = left >= max(right, up, down);
-        int rsl = condition ? left : max(right, up, down);
-        return rsl;
+        return left >= max(right, up, down) ? left : max(right, up, down);
     }
 
     public static void main(String[] args) {
