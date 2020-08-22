@@ -7,6 +7,18 @@ public class Max {
         return result;
     }
 
+    public static int max(int left, int right, int up) {
+        boolean condition = left >= max(right, up);
+        int rsl = condition ? left : max(right, up);
+        return rsl;
+    }
+
+    public static int max(int left, int right, int up, int down) {
+        boolean condition = left >= max(right, up, down);
+        int rsl = condition ? left : max(right, up, down);
+        return rsl;
+    }
+
     public static void main(String[] args) {
         int result = Max.max(2, 3);
         System.out.println(result);
