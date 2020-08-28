@@ -46,10 +46,10 @@ public class License {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         License license = (License) o;
-        return (owner == null && license.owner == null) || owner.equals(license.owner) &&
-                (model == null && license.model == null) || model.equals(license.model) &&
-                (code == null && license.code == null) || code.equals(license.code) &&
-                (created == null && license.created == null) || created.equals(license.created);
+        return owner == null || owner.equals(license.owner) &&
+                model == null || model.equals(license.model) &&
+                code == null || code.equals(license.code) &&
+                created == null || created.equals(license.created);
     }
 
     @Override
