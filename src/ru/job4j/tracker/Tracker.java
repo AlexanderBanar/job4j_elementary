@@ -35,21 +35,18 @@ public class Tracker {
                 resultWithNull[counter++] = sample;
             }
         }
-        Item[] result = Arrays.copyOf(resultWithNull, counter);
-        return result;
+        return Arrays.copyOf(resultWithNull, counter);
     }
 
     public Item[] findByName(String key) {
-        Item[] temp = Arrays.copyOf(items, size);
-        Item[] resultWithNull = new Item[temp.length];
+        Item[] resultWithNull = new Item[size];
         int counter = 0;
-        for (int index = 0; index < temp.length; index++) {
-            Item sample = temp[index];
-            if (sample.getName() == key) {
+        for (int index = 0; index < items.length; index++) {
+            Item sample = items[index];
+            if (sample.getName().equals(key)) {
                 resultWithNull[counter++] = sample;
             }
         }
-        Item[] result = Arrays.copyOf(resultWithNull, counter);
-        return result;
+        return Arrays.copyOf(resultWithNull, counter);
     }
 }
