@@ -57,7 +57,7 @@ public class Tracker {
     public boolean delete(int id) {
         boolean rsl = false;
         int index = indexOf(id);
-        if (indexOf(id) != -1) {
+        if (index != -1) {
             System.arraycopy(items, index + 1, items, index, size - index);
             items[size-- - 1] = null;
             rsl = true;
