@@ -56,8 +56,18 @@ public class Tracker {
     public boolean replace(int id, Item item) {
         int rsl = indexOf(id);
         if (rsl != -1) {
-            items[rsl].setName(item.getName());
+            items[rsl] = item;
         }
         return rsl != -1 ? true : false;
+    }
+
+    public boolean delete(int id) {
+        boolean rsl = false;
+        if (indexOf(id) != -1) {
+            System.arraycopy(items, id + 1, items, id, size - id);
+            items[size-- - 1] = null;
+            rsl = true;
+        }
+        return rsl;
     }
 }
