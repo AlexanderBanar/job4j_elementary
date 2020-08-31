@@ -1,8 +1,12 @@
 package ru.job4j.tracker;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Item {
     private int id;
     private String name;
+    LocalDateTime created = LocalDateTime.now();
 
     @Override
     public String toString() {
@@ -26,5 +30,10 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public LocalDateTime getCreated() {
+        return created;
     }
 }
