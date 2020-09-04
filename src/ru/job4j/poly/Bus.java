@@ -3,7 +3,7 @@ package ru.job4j.poly;
 public class Bus implements Transport {
     @Override
     public String drive() {
-        String driving = "On parking"
+        String driving = "On parking";
         if (passengers(4) == 0) {
             driving = "On drive ...";
         }
