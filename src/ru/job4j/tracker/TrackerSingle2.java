@@ -2,6 +2,11 @@ package ru.job4j.tracker;
 
 public class TrackerSingle2 {
     private static TrackerSingle2 instance;
+    private final Tracker tracker = new Tracker();
+
+    public Tracker getTracker() {
+        return tracker;
+    }
 
     private TrackerSingle2() {
     }
@@ -11,9 +16,5 @@ public class TrackerSingle2 {
             instance = new TrackerSingle2();
         }
         return instance;
-    }
-
-    public Item add(Item model) {
-        return model;
     }
 }

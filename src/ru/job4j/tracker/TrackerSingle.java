@@ -1,23 +1,23 @@
 package ru.job4j.tracker;
 
 public class TrackerSingle {
-    public TrackerSingle1 single1() {
-        TrackerSingle1 tracker1 = TrackerSingle1.INSTANCE;
+    public Tracker single1() {
+        Tracker tracker1 = TrackerSingle1.INSTANCE.getTracker();
         return tracker1;
     }
 
-    public TrackerSingle2 single2() {
-        TrackerSingle2 tracker2 = TrackerSingle2.getInstance();
+    public Tracker single2() {
+        Tracker tracker2 = TrackerSingle2.getInstance().getTracker();
         return tracker2;
     }
 
-    public TrackerSingle3 single3() {
-        TrackerSingle3 tracker3 = TrackerSingle3.getInstance();
+    public Tracker single3() {
+        Tracker tracker3 = TrackerSingle3.getInstance().getTracker();
         return tracker3;
     }
 
-    public TrackerSingle4 single4() {
-        TrackerSingle4 tracker4 = TrackerSingle4.getInstance();
+    public Tracker single4() {
+        Tracker tracker4 = TrackerSingle4.getInstance().getTracker();
         return tracker4;
     }
 }

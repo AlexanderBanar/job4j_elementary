@@ -2,8 +2,9 @@ package ru.job4j.tracker;
 
 public enum TrackerSingle1 {
     INSTANCE;
+    private final Tracker tracker = new Tracker();
 
-    public static void main(String[] args) {
-        TrackerSingle1 tracker = TrackerSingle1.INSTANCE;
+    public Tracker getTracker() {
+        return tracker;
     }
 }

@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 public class TrackerSingleTest {
     @Test
     public void single1() {
-        assertThat(new TrackerSingle().single1(), is(new TrackerSingle().single1()));
+        Tracker tracker1 = new TrackerSingle().single1();
+        Tracker tracker2 = new TrackerSingle().single1();
+        assertThat(tracker1, is(tracker2));
     }
 
     @Test

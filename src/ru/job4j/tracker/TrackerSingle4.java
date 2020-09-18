@@ -3,6 +3,11 @@ package ru.job4j.tracker;
 public class TrackerSingle4 {
     private TrackerSingle4() {
     }
+    private final Tracker tracker = new Tracker();
+
+    public Tracker getTracker() {
+        return tracker;
+    }
 
     public static TrackerSingle4 getInstance() {
         return Holder.INSTANCE;
@@ -14,9 +19,5 @@ public class TrackerSingle4 {
 
     private static final class Holder {
         private static final TrackerSingle4 INSTANCE = new TrackerSingle4();
-    }
-
-    public static void main(String[] args) {
-        TrackerSingle4 tracker = TrackerSingle4.getInstance();
     }
 }
