@@ -1,7 +1,5 @@
 package ru.job4j.tasks2;
 
-import java.util.Arrays;
-
 public class Anomaly {
     public static int[][] found(int[] data, int up, int down) {
         int counter = 0;
@@ -13,58 +11,51 @@ public class Anomaly {
         if (counter == 0) {
             return new int[0][0];
         } else {
+            boolean isAnomaly = false;
             counter = 0;
-            String status = "initial";
             for (int i = 0; i < data.length; i++) {
-                if ((data[i] <= down || data[i] >= up) && status.equals("initial")) {
-                    status = "started";
+                if (isAnomaly) {
+                    if (data[i] < up || data[i] > down) {
+                        counter++;
+                        isAnomaly = false;
+                    }
+                } else {
+                    if (data[i] >= up || data[i] <= down) {
+                        isAnomaly = true;
+                    }
                 }
-                if ((data[i] > down || data[i] < up) && status.equals("started")) {
-                    status = "initial";
+                if (i == data.length - 1 && isAnomaly) {
                     counter++;
                 }
             }
             int[][] rsl = new int[counter][];
-            status = "initial";
             int startIndex = 0;
             int rslIndex = 0;
-            boolean upOn = false;
-            boolean downOn = false;
+            if (isAnomaly) {
+                isAnomaly = false;
+            }
             for (int i = 0; i < data.length; i++) {
-                if (upOn || downOn) {
-
+                if (isAnomaly) {
+                    if (data[i] < up || data[i] > down) {
+                        if (i - startIndex != 1 && rslIndex < rsl.length) {
+                            rsl[rslIndex++] = new int[] {startIndex, i - 1};
+                        } else {
+                            rsl[rslIndex++] = new int[] {i - 1, i - 1};
+                        }
+                        isAnomaly = false;
+                    }
                 } else {
-                    if (data[i] >= up) {
-                        upOn = true;
+                    if (data[i] >= up || data[i] <= down) {
                         startIndex = i;
-                    }
-                    if (data[i] <= down) {
-                        downOn = true;
-                        startIndex = i;
+                        isAnomaly = true;
                     }
                 }
-
-
-
-
-
-
-                if ((data[i] <= down || data[i] >= up) && status.equals("initial")) {
-                    status = "started";
-                    startIndex = i;
-                }
-                if ((data[i] > down || data[i] < up) && status.equals("started")) {
-                    status = "initial";
+                if (i == data.length - 1 && isAnomaly) {
                     if (i - startIndex != 1 && rslIndex < rsl.length) {
-                        rsl[rslIndex++] = Arrays.copyOfRange(data, startIndex, i);
+                        rsl[rslIndex++] = new int[] {startIndex, i - 1};
                     } else {
-                        rsl[rslIndex++] = new int[] {data[i - 1], data[i - 1]};
+                        rsl[rslIndex++] = new int[] {i - 1, i - 1};
                     }
-
-
-
-
-
                 }
             }
             return rsl;
