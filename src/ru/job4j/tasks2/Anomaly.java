@@ -36,11 +36,13 @@ public class Anomaly {
             }
             for (int i = 0; i < data.length; i++) {
                 if (isAnomaly) {
-                    if (data[i] < up || data[i] > down) {
-                        if (i - startIndex != 1 && rslIndex < rsl.length) {
+                    if (data[i] < up && data[i] > down) {
+                        if (i - 1 - startIndex > 0 && rslIndex < rsl.length) {
                             rsl[rslIndex++] = new int[] {startIndex, i - 1};
                         } else {
-                            rsl[rslIndex++] = new int[] {i - 1, i - 1};
+                            if (rslIndex < rsl.length) {
+                                rsl[rslIndex++] = new int[] {i - 1, i - 1};
+                            }
                         }
                         isAnomaly = false;
                     }
@@ -51,10 +53,12 @@ public class Anomaly {
                     }
                 }
                 if (i == data.length - 1 && isAnomaly) {
-                    if (i - startIndex != 1 && rslIndex < rsl.length) {
-                        rsl[rslIndex++] = new int[] {startIndex, i - 1};
+                    if (i - startIndex > 0 && rslIndex < rsl.length) {
+                        rsl[rslIndex++] = new int[] {startIndex, i};
                     } else {
-                        rsl[rslIndex++] = new int[] {i - 1, i - 1};
+                        if (rslIndex < rsl.length) {
+                            rsl[rslIndex++] = new int[] {i, i};
+                        }
                     }
                 }
             }
