@@ -4,9 +4,8 @@ import java.util.function.Consumer;
 
 public class ConsumerAndThen {
     public static Consumer<String> consumer(String input) {
-        String rsl = input;
-        Consumer<String> print = input -> System.out.println();
-        Consumer<String> ln = System.out::println;
+        Consumer<String> print = x -> System.out.print(input);
+        Consumer<String> ln = x -> System.out.println();
         return print.andThen(ln);
     }
 }
