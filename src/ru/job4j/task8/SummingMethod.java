@@ -55,6 +55,18 @@ public class SummingMethod {
     }
 
     public static Map<String, Integer> summing(List<User> users) {
-        // your code here
+        List<Pair> pairs = new ArrayList<>();
+        for (User n : users) {
+            for (Bill k : n.getBills()) {
+                Pair temp = new Pair(n, k);
+                pairs.add(temp);
+            }
+        }
+        Map<String, Integer> rsl = pairs.stream()
+                .collect(Collectors.groupingBy(
+                        x -> x.getUser().getName(),
+                        Collectors.summingInt(x -> x.getBill().getBalance())
+                ));
+        return rsl;
     }
 }
