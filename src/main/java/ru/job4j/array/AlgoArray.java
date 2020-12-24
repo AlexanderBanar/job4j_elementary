@@ -16,7 +16,7 @@ public class AlgoArray {
         array[3] = array[4];
         array[4] = temp;
         System.out.println();
-        System.out.println("Corrected ru.job4j.array:");
+        System.out.println("Corrected ru.ru.job4j.ru.job4j.array:");
         for (int index = 0; index < array.length; index++) {
             System.out.println(array[index]);
         }
